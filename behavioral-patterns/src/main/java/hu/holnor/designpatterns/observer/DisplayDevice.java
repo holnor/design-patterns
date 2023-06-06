@@ -1,4 +1,4 @@
-package hu.holnor.designpatterns;
+package hu.holnor.designpatterns.observer;
 
 public class DisplayDevice implements Observer {
     private String id;
@@ -13,6 +13,7 @@ public class DisplayDevice implements Observer {
         System.out.println("<" + id + ">\n" + "Temperature: " + weatherStation.getTemperature() + "\nHumidity: " + weatherStation.getHumidity() + "\n" +"-".repeat(30) + "\n");
     }
 
+    @Override
     public void update() {
         display();
     }

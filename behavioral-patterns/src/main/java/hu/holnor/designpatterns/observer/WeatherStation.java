@@ -1,12 +1,12 @@
-package hu.holnor.designpatterns;
+package hu.holnor.designpatterns.observer;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class WeatherStation implements Observable {
-    private float temperature;
-    private float humidity;
+    private float temperature = 23.12f;
+    private float humidity = 0.52f;
     private List<Observer> displays = new ArrayList<Observer>();
 
     public float getTemperature() {
@@ -19,15 +19,15 @@ public class WeatherStation implements Observable {
 
     public void startMeasure() {
         Random random = new Random();
-        int delay = random.nextInt(10000);
+        int delay = random.nextInt(5000);
         while (true) {
             try {
                 Thread.sleep(delay);
                 measureTemperature();
-                delay = random.nextInt(10000);
+                delay = random.nextInt(5000);
                 Thread.sleep(delay);
                 measureHumidity();
-                delay = random.nextInt(10000);
+                delay = random.nextInt(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -42,7 +42,7 @@ public class WeatherStation implements Observable {
 
     private void measureHumidity() {
         Random random = new Random();
-        this.humidity += random.nextFloat() * 2 - 1;
+        this.humidity += 0.01 + (0.10 - 0.01) * random.nextFloat();
         notifyObservers();
     }
 
