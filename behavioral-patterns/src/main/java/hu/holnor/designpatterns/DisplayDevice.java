@@ -10,7 +10,7 @@ public class DisplayDevice implements Observer {
     }
 
     public void display() {
-        System.out.println("Temperature: " + weatherStation.getTemperature() + "\nHumidity: " + weatherStation.getHumidity());
+        System.out.println("<" + id + ">\n" + "Temperature: " + weatherStation.getTemperature() + "\nHumidity: " + weatherStation.getHumidity() + "\n" +"-".repeat(30) + "\n");
     }
 
     public void update() {
